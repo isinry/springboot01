@@ -1,0 +1,28 @@
+server:
+  port: 8000
+
+spring:
+  datasource:
+    username: springboot01
+    password: wRK3eLAZzxGaA4P8
+    url: jdbc:mysql://111.231.231.193:3306/springboot01?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .html
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.sinrycool.springboot01.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+#showSql
+logging:
+  level:
+    com:
+      sinrycool:
+        springboot01:
+          mapper: debug
+
+

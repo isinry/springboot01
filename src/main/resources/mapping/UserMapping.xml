@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinrycool.springboot01.mapper.UserMapper" >
+    <resultMap id="BaseUserResultMap" type="com.sinrycool.springboot01.entity.UserEntity">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="create_time" jdbcType="TIME" property="create_time"/>
+        <result column="update_time" jdbcType="TIME" property="create_time"/>
+        <result column="delete_time" jdbcType="TIME" property="create_time"/>
+    </resultMap>
+
+    <select id="SelectUsers" resultType="com.sinrycool.springboot01.entity.UserEntity">
+        select * from users
+    </select>
+
+    <insert id="AddUser" parameterType="com.sinrycool.springboot01.entity.UserEntity" >
+        insert into users (username,password,create_time) values (#{username}, #{password}, #{createTime})
+    </insert>
+
+    <update id="EditUser" parameterType="com.sinrycool.springboot01.entity.UserEntity">
+        update users
+        <set>
+            username = #{username},
+            <if test="password != null">password = #{password}, </if>
+            update_time = #{updateTime}
+        </set>
+        where id = #{id}
+    </update>
+</mapper>
